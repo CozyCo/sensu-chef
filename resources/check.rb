@@ -34,7 +34,8 @@ def after_created
     raise Chef::Exceptions::ValidationFailed, "Sensu check #{name}: must either define interval, or cron, currently both set to 'false' which means both are ignored."
   end
 
-  if interval.is_a?(Integer) && !interval.positive?
+  #if interval.is_a?(Integer) && !interval.positive?
+  if interval.is_a?(Integer) && interval<1
     raise Chef::Exceptions::ValidationFailed, "Sensu check #{name}: itnerval must be a positive number"
   end
 
